@@ -28,11 +28,15 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+  Counter 1 utilizes closure by localizing the variable count. Counter 2 makes count a global object accesible in future functions.
+
   
   2. Which of the two uses a closure? How can you tell?
+  Counter 1 uses closure by by nesting function and having private variables.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     Counter 1 is better if you wanted to use the function multiple times in different applications or cases. Counter 2 puts everything in the same bucket for count.
 */
 
 // counter1 code
@@ -62,8 +66,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(scores){
+    scores = Math.floor(Math.random() * 2)
+    return scores
 }
 
 
