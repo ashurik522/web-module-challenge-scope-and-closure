@@ -66,9 +66,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(scores){
-    scores = Math.floor(Math.random() * 3)
-    return scores
+function inning(){
+  
+    return Math.floor(Math.random() * 3)
 }
  //console.log(inning())
 
@@ -100,7 +100,7 @@ function finalScore(inningCallBack, numInnings){
     }
   }
 
-console.log(finalScore(inning, 9))
+//console.log(finalScore(inning, 9))
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -108,14 +108,12 @@ Use the getInningScore() function below to do the following:
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
 function getInningScore(inningCallBack) {
-  let homeScore = inningCallBack();
-  let awayScore = inningCallBack();
   return {
-    Home: homeScore,
-    Away: awayScore
+    Home: inningCallBack(),
+    Away: inningCallBack()
   }
 }
-console.log(getInningScore(inning))
+//console.log(getInningScore(inning))
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -158,11 +156,25 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScoreCB, inningCB, numInnings) {
+  let inningArray = [];
+  let homeScore = 0;
+  let awayScore = 0;
+  for (i =0; i < numInnings; i ++) {
+    const currentInning = getInningScoreCB(inningCB);
+    homeScore = homeScore + currentInning.Home;
+    awayScore = awayScore + currentInning.Away;
+    inningArray.push(`Inning ${i + 1}: Away ${currentInning.Away} - Home ${i + 1}: ${currentInning.Home}`);
+  }
+  if (homeScore === awayScore) { 
+    inningArray.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`);
+  } else {
+    inningArray.push(`Final Score: Away ${awayScore} - Home ${homeScore}`)
+  }
+  return inningArray;
 }
 
-
+console.log(scoreboard(getInningScore, inning, 9))
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
