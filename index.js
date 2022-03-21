@@ -160,7 +160,7 @@ function scoreboard(getInningScoreCB, inningCB, numInnings) {
   let inningArray = [];
   let homeScore = 0;
   let awayScore = 0;
-  for (i =0; i < numInnings; i ++) {
+  for (i = 0; i < numInnings; i ++) {
     const currentInning = getInningScoreCB(inningCB);
     homeScore = homeScore + currentInning.Home;
     awayScore = awayScore + currentInning.Away;
@@ -174,7 +174,7 @@ function scoreboard(getInningScoreCB, inningCB, numInnings) {
   return inningArray;
 }
 
-console.log(scoreboard(getInningScore, inning, 9))
+//console.log(scoreboard(getInningScore, inning, 9))
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
